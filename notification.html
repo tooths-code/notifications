@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Push Notification Test</title>
+</head>
+<body>
+    <h1>Web Push Notification Test</h1>
+    <button id="notificationButton">Send Notification</button>
+
+    <script>
+        // Check if the browser supports notifications
+        if ('Notification' in window) {
+            // Request permission to send notifications
+            document.getElementById('notificationButton').addEventListener('click', function() {
+                Notification.requestPermission().then(function(permission) {
+                    if (permission === 'granted') {
+                        // Create and display a notification
+                        var notification = new Notification('Test Notification', {
+                            body: 'This is a test notification.',
+                            icon: 'icon.png' // Replace with the path to your notification icon
+                        });
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
